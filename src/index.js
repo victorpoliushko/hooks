@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const App = () => {
+  return (
+    <div className="">
+      <HookSwitcher />
+    </div>
+  );
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const HookSwitcher = () => {
+  const [color, setColor] = useState("white");
+  const [fontSize, setFontSize] = useState(14);
+  return (
+    <div
+      className=""
+      style={{
+        padding: "10px",
+        backgroundColor: color,
+        fontSize: `${fontSize}px`,
+      }}
+    >
+      <p>Hello World</p>
+      <button onClick={() => setColor("grey")}>Dark</button>
+      <button onClick={() => setColor("white")}>Light</button>
+      <button onClick={() => setFontSize((s) => s + 2)}>+</button>
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById("root"));
